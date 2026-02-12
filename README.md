@@ -2,13 +2,13 @@
 
 
  
-## NAME:
+## NAME: Thejaswini D
 
-## DEPARTMENT:
+## DEPARTMENT: B.E.CSE(IoT)
 
-## ROLL NO:
+## ROLL NO: 212223110059
 
-## DATE OF EXPERIMENT:
+## DATE OF EXPERIMENT: 11.02.2026
 
 ## AIM
 
@@ -64,27 +64,104 @@ Connect LED 2 to GP17 via a 330Ω resistor.
 Connect the other terminals of the switches to GND.
 
 ## PROGRAM (MicroPython)
-''''
+### EXPERIMENT 2A
+```
+from machine import Pin
+from time import sleep
 
+print("Welcome Pi Pico")
 
+# Switches with internal pull-ups
+switch1 = Pin(2, Pin.IN, Pin.PULL_UP)
+switch2 = Pin(3, Pin.IN, Pin.PULL_UP)
 
- 
+# LEDs
+led1 = Pin(15, Pin.OUT)
+led2 = Pin(16, Pin.OUT)
+
+while True:
+    sw1_state = switch1.value()  # 0 when pressed, 1 when released
+    sw2_state = switch2.value()
+    
+    print("Switch 1 state:", sw1_state)
+    print("Switch 2 state:", sw2_state)
+    
+    # Turn off LEDs by default
+    led1.value(0)
+    led2.value(0)
+    
+    if sw1_state == 1 and sw2_state == 1:
+        # Both pressed -> both LEDs off
+        led1.value(0)
+        led2.value(0)
+    elif sw1_state == 1:
+        # Only switch1 pressed -> blink led1
+        led1.value(0)
+        sleep(0.5)
+        led1.value(1)
+    elif sw2_state == 1:
+        # Only switch2 pressed -> blink led2
+        led2.value(0)
+        sleep(0.5)
+        led2.value(1)
+    
+    sleep(0.1)
+```
+### EXPERIMENT 2B
+```
+from machine import Pin
+import time
+print("Pi Pico")
+led1 = Pin(0, Pin.OUT)
+led2 = Pin(3, Pin.OUT)
+led3 = Pin(6, Pin.OUT)
+buzzer=Pin(15,Pin.OUT)
+while True:
+    led1.value(1) 
+    print("LED is ON")
+    time.sleep(1) 
+    led1.value(0)  
+    print("LED is OFF")
+    time.sleep(1)
+    led2.value(1) 
+    print("LED is ON")
+    time.sleep(1) 
+    led2.value(0)  
+    print("LED is OFF")
+    time.sleep(1)
+    led3.value(1) 
+    print("LED is ON")
+    time.sleep(1) 
+    led3.value(0)  
+    print("LED is OFF")
+    time.sleep(1)
+    buzzer.value(1) 
+    print("Buzzer is ON")
+    time.sleep(1) 
+    buzzer.value(0)  
+    print("Buzzer is OFF")
+    time.sleep(1)
+```
 
 ## OUTPUT
+### EXPERIMENT 2A
 
+<img width="989" height="806" alt="image" src="https://github.com/user-attachments/assets/6410821d-9b16-41a6-b304-9109b4b20a7b" />
 
+<img width="964" height="791" alt="image" src="https://github.com/user-attachments/assets/0dec0d60-94b9-401a-9f45-c2b3b55dff26" />
 
-FIGURE-02: CIRCUIT CONNECTION
+<img width="1010" height="796" alt="image" src="https://github.com/user-attachments/assets/9729ac54-8b4f-4177-a3b2-90bcab0107a6" />
 
-FIGURE-03: CODE EXECUTION OUTPUT
+<img width="994" height="806" alt="image" src="https://github.com/user-attachments/assets/21592266-245c-4880-b990-feafcc72522b" />
 
-FIGURE-04: LED STATUS BASED ON SWITCH INPUTS
-## TIMING DIGAGRAM 
+### EXPERIMENT 2B
+<img width="784" height="807" alt="Screenshot 2026-02-11 113701" src="https://github.com/user-attachments/assets/0610851d-c0b5-4cc1-8216-fbc28443ce03" />
 
+<img width="820" height="716" alt="Screenshot 2026-02-11 113727" src="https://github.com/user-attachments/assets/88b36b83-b560-4d28-bd49-31e7345b8ba5" />
 
-UPLOAD YOUR TIMING DIGARAM HERE 
+<img width="814" height="716" alt="Screenshot 2026-02-11 113746" src="https://github.com/user-attachments/assets/4149cac9-f405-4327-a170-51b364576c21" />
 
-
+<img width="857" height="707" alt="Screenshot 2026-02-11 113806" src="https://github.com/user-attachments/assets/fef80a2c-11cc-4cb8-a0a1-b2f0ab152f82" />
 
 ## RESULTS
 
